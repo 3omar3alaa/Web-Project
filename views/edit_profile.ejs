@@ -1,0 +1,86 @@
+<html>
+<head>
+    <%- include('bootstrap_head'); -%>
+    <title>Edit Your Profile</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header font-weight-bold">Edit Your Profile</div>
+                <div class="card-body">
+                    <form action="/tenant/update/<%= tenant._id %>" method="post">
+                        <div class="row">
+                            <div class="col-3">
+                                <h6 class="font-weight-light">Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="e.g: Demis Hassabis" value="<%= tenant.name %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <h6 class="font-weight-light">Age</h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <input type="number" name="age" placeholder="e.g: 42" value="<%= tenant.age %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <h6 class="font-weight-light">Email</h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="e.g: d.hassabis@gmail.com" value="<%= tenant.email %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <h6 class="font-weight-light">Mobile Number</h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <input type="number" name="mobileNumber" placeholder="e.g: 01111111111" value="<%= tenant.mobileNumber %>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <h6 class="font-weight-light">Address</h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <input type="text" name="address" placeholder="e.g: Cairo, Maadi, St. 77, Building 57" value="<%= tenant.address %>">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                    <% if(success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%=success%>
+                    </div>
+                    <% } %>
+                    <% if(error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%=error%>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <%- include('bootstrap_head'); -%>
+    <title><%= tenant.name %>'s Profile Page</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header font-weight-bold"><%= tenant.name %>'s Profile</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <h6 class="font-weight-light">Age</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6 class="font-weight-bold"><%= tenant.age %></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <h6 class="font-weight-light">Email</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6 class="font-weight-bold"><%= tenant.email %></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <h6 class="font-weight-light">Mobile Number</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6 class="font-weight-bold"><%= tenant.mobileNumber %></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <h6 class="font-weight-light">Address</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6 class="font-weight-bold"><%= tenant.address %></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

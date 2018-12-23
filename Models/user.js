@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-TenantSchema = new Schema({
-    name: {
+UserSchema = new Schema({
+    username: {
         type: String,
         required: true
     },
     password:{
+        type: String,
+        required: true
+    },
+    fullName:{
         type: String,
         required: true
     },
@@ -28,6 +32,6 @@ TenantSchema = new Schema({
     } //more will be added later on
 });
 
-const TenantModel = mongoose.model('Tenant', TenantSchema);
+const UserModel = mongoose.model('User', UserSchema);
 
-module.exports = TenantModel;
+module.exports = UserModel;
