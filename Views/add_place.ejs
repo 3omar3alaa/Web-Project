@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Checkout</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Sublime project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/checkout.css">
+<link rel="stylesheet" type="text/css" href="styles/checkout_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<div class="logo"><a href="#">FireBnb</a></div>
+							<div class="header_extra ml-auto">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Checkout -->
+	
+	<div class="checkout">
+		<div class="container">
+			<div class="row">
+
+				<!-- Billing Info -->
+				<div class="col-lg-12">
+					<div class="billing checkout_section">
+						<div class="section_title">Add New Pace</div>
+						<div class="checkout_form_container">
+							<form action="/owner" method="PUT" id="checkout_form" class="checkout_form">
+								<label for="date">Available Date</label>
+								<div class="row">
+									<div class="col-xl-6">
+										<!-- From -->
+										<label for="from_date">From</label>
+										<input type="date" id="from_date" class="checkout_input" name = "from">
+									</div>
+									<div class="col-xl-6 to_col">
+										<!-- To -->
+										<label for="to_date">To</label>
+										<input type="date" id="to_date" class="checkout_input" >
+									</div>
+								</div>
+								<div>
+									<!-- Address -->
+									<label for="address">Address</label>
+									<input type="text" id="checkout_address" class="checkout_input" name = "address">
+								</div>
+								<div>
+									<!-- Size -->
+									<label for="size">Size</label>
+									<input type="text" id="checkout_size" class="checkout_input" name = "size">
+								</div>
+								<div>
+									<!-- Price -->
+									<label for="price">Price</label>
+									<input type="number" id="price" class="checkout_input" name="price">
+								</div>
+								<div>
+									<!-- Phone no -->
+									<label for="checkout_phone">Phone no</label>
+									<input type="phone" id="checkout_phone" class="checkout_input" >
+								</div>
+								<div>
+									<!-- Email -->
+									<label for="checkout_email">Email Address</label>
+									<input type="phone" id="checkout_email" class="checkout_input" >
+								</div>
+								<div>
+									<!-- Notes -->
+									<label for="notes">Notes</label>
+									<input type="text" id="notes" class="checkout_input" name = "notes">
+								</div>
+								<button class="btn btn-primary btn-lg">Add Place</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/greensock/TweenMax.min.js"></script>
+<script src="plugins/greensock/TimelineMax.min.js"></script>
+<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="plugins/greensock/animation.gsap.min.js"></script>
+<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html >
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+</head>
+
+<body>
+    <section class="home">
+    <h1>Places</h1>
+    <a href='/'> Home  </a>
+    <ul class="list-group">
+        <% for(var i=0; i<places.length; i++) {%>
+            <li class="list-group-item">
+                <span>Address: </span><%= places[i].address %>
+                <br/>
+                <span>Size: </span><%= places[i].size %>
+                <br/>
+                <span>Price: </span><%= places[i].price %>  
+                <br/>
+                <span>Notes: </span><%= places[i].notes %>              
+            </li>
+        <% } %>
+    </ul>
+    </section>
+</body>
+
+</html>
