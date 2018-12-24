@@ -3,13 +3,32 @@ const compu = require('../helpers/computation');
 const router = express.Router();
 const UserModel = require('../models/user');
 const PlaceModel = require('../models/place');
+const mongoose = require('mongoose');
 
-//TODO check given id is the logged in if
+
+//TODO check tenant id of offer is the logged in id
+router.get('/cancel/:offerId', function (req, res){
+    offerId = mongoose.Types.ObjectId(req.params.offerId);
+    tenantId = req.headers.tenantid;
+    placeId = req.headers.placeid;
+    PlaceModel.update({_id : placeId}, {$pull: {offersLog: {_id : offerId}}}).exec(function (err, response) {
+        if (err){
+            req.flash('error', 'Error! Please try again.');
+            res.redirect('/offer/view_all/'+tenantId);
+        }else{
+            req.flash('success', 'Offer removed successfully!');
+            res.redirect('/offer/view_all/'+tenantId);
+        }
+    });
+});
+
+
+//TODO check given id is the logged in id
 //TODO is it okay to send id?
 router.get('/view_all/:id', function (req, res){
     PlaceModel.find({"offersLog.tenantId":req.params.id},
         {title:1, offersLog:{$elemMatch:{tenantId: req.params.id}}}).lean().exec(function (err, doc) {
-            res.render('offers_done', {places : doc});
+            res.render('offers_done', {tenant:{_id:req.params.id}, places : doc, success: req.flash('success'), error: req.flash('error')});
     });
 });
 
