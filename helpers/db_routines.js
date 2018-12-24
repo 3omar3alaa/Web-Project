@@ -30,12 +30,43 @@ module.exports.seed = function(){
                         }
                     ],
                     'description': 'Coziest place on earth, has PS4 and all your dreams',
-                    offersLog : [
+                    'offersLog' : [
                         {
                             'tenantId' : mongoose.Types.ObjectId('y5aaaaaaaaaa'),
                             'offerInterval' : {
                                 'startDate' : new Date(Date.parse('01-15-2019')),
                                 'endDate' : new Date(Date.parse('02-10-2019'))
+                            },
+                            'status' : 'pending'
+                        },
+                        {
+                            'tenantId' : mongoose.Types.ObjectId('j5aaaaaaaaaa'),
+                            'offerInterval' : {
+                                'startDate' : new Date(Date.parse('01-16-2019')),
+                                'endDate' : new Date(Date.parse('02-09-2019'))
+                            },
+                            'status' : 'pending'
+                        }
+                    ],
+                    'reviews' : []
+                },
+                {
+                    '_id' : mongoose.Types.ObjectId('f5aaaaaaaaaa'),
+                    'title' : 'Villa on Main Street',
+                    'ownerId' : mongoose.Types.ObjectId('g5aaaaaaaaaa'),
+                    'availabilityIntervals': [
+                        {
+                            'startDate' : new Date(Date.parse('11-13-2019')),
+                            'endDate' : new Date(Date.parse('12-19-2019'))
+                        }
+                    ],
+                    'description': 'Best view in Rome and close to everything since its close to Rome',
+                    'offersLog' : [
+                        {
+                            'tenantId' : mongoose.Types.ObjectId('z5aaaaaaaaaa'),
+                            'offerInterval' : {
+                                'startDate' : new Date(Date.parse('12-01-2019')),
+                                'endDate' : new Date(Date.parse('12-09-2019'))
                             },
                             'status' : 'pending'
                         }
@@ -52,7 +83,8 @@ module.exports.seed = function(){
         //seeder.loadModels(['./Models/user.js', './Models/place.js']);
         seeder.clearModels(['User', 'Place'], function(){
             seeder.populateModels(data, function(){
-                seeder.disconnect();
+                //seeder.disconnect();
+                console.log('Seeder finished!');
             })
         });
     });
