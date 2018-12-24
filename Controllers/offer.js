@@ -4,6 +4,12 @@ const router = express.Router();
 const UserModel = require('../models/user');
 const PlaceModel = require('../models/place');
 
+//TODO check given id is the logged in if
+//TODO is it okay to send id?
+router.get('/view_all/:id', function (req, res){
+    PlaceModel.find({offersLog:})
+});
+
 //TODO check tenantId is the logged in user
 //TODO lock database??
 router.post('/apply', function (req, res){

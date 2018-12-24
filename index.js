@@ -8,6 +8,9 @@ const flash = require('connect-flash');
 const multer = require('multer');
 const upload = multer();
 
+//Comment this if you don't want to seed
+require('./helpers/db_routines').seed();
+
 
 // setup express app
 const app = express();
