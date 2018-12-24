@@ -1,0 +1,49 @@
+<html>
+    <head>
+            <%- include('bootstrap_head'); -%>
+            <title>FireBnb</title>
+    </head>
+<!------ Include the above in your HEAD tag ---------->
+
+    <body>
+
+        <!-- Form Name -->
+        <nav class="navbar navbar-inverse">
+            <a class="navbar-brand" href="#">FireBnb</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <%if (user) {%>
+                <h3>Hello,  <%= user.fullName %> </h3>
+                <form class="form-inline my-2 my-lg-0" action="/user/signout">
+                    <button class="btn btn-outline-primart my-2 my-sm-0"  >Sign Out</button>
+                </form>
+            <%} else {%>
+                <form class="form-inline my-2 my-lg-0" action="/user/signin">
+                    <button class="btn btn-outline-primart my-2 my-sm-0"  >Sign In</button>
+                </form>
+                <form class="form-inline my-2 my-lg-0" action="/user/signup">
+                    <button class="btn btn-outline-primart my-2 my-sm-0"  >Sign Up</button>
+                </form>
+            <% } %>
+
+        </nav>
+
+        <nav id="sidebar">
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="#">Add Place</a>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+
+    </nav>
+    </body>
+</html>

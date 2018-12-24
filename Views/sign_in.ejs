@@ -1,0 +1,48 @@
+<html>
+    <head>
+            <%- include('bootstrap_head'); -%>
+            <title>SIGN IN</title>
+    </head>
+<!------ Include the above in your HEAD tag ---------->
+
+    <body>
+
+        <!-- Form Name -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">FireBnb</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+        <form class="form-horizontal" method="POST" action="/user/signin">
+
+        <!-- Text input-->
+        <div class="form-group">
+        <label class="col-md-4 control-label" for="fn">Username</label>  
+        <div class="col-md-12">
+        <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
+            
+        </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+        <label class="col-md-4 control-label" for="ln">Password</label>  
+        <div class="col-md-12">
+        <input id="password" name="password" type="Password" placeholder="Password" class="form-control input-md" required="">
+            
+        </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+        <label class="col-md-4 control-label" for="submit"></label>
+        <div class="col-md-4">
+            <button id="submit" name="submit" class="btn btn-primary">SIGN IN</button>
+        </div>
+        </div>
+
+
+        </form>
+    </body>

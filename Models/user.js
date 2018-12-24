@@ -14,15 +14,20 @@ UserSchema = new Schema({
         type: String,
         required: true
     },
-    age: {
-        type: Number,
-        required: true
+    // I feel that age doesn't matter
+    // age: {
+    //     type: Number,
+    //     required: true
+    // },
+    type: { //admin or a user
+        type: String,
+        default : "user"
     },
     email:{
         type: String,
         required: true
     },
-    mobileNumber:{
+    phone:{
         type: Number,
         required: true
     },
