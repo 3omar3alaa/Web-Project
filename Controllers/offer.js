@@ -7,10 +7,10 @@ const PlaceModel = require('../models/place');
 //TODO check given id is the logged in if
 //TODO is it okay to send id?
 router.get('/view_all/:id', function (req, res){
-    PlaceModel.find({"offersLog.tenantId":req.params.id}, function (err, res) {
-            res.send('5apipi');
+    PlaceModel.find({"offersLog.tenantId":req.params.id},
+        {title:1, offersLog:{$elemMatch:{tenantId: req.params.id}}}).lean().exec(function (err, doc) {
+            res.render('offers_done', {places : doc});
     });
-    console.log('problem?');
 });
 
 //TODO check tenantId is the logged in user

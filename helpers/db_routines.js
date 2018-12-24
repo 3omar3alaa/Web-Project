@@ -45,7 +45,7 @@ module.exports.seed = function(){
                                 'startDate' : new Date(Date.parse('01-16-2019')),
                                 'endDate' : new Date(Date.parse('02-09-2019'))
                             },
-                            'status' : 'pending'
+                            'status' : 'accepted'
                         }
                     ],
                     'reviews' : []
@@ -63,12 +63,12 @@ module.exports.seed = function(){
                     'description': 'Best view in Rome and close to everything since its close to Rome',
                     'offersLog' : [
                         {
-                            'tenantId' : mongoose.Types.ObjectId('z5aaaaaaaaaa'),
+                            'tenantId' : mongoose.Types.ObjectId('j5aaaaaaaaaa'),
                             'offerInterval' : {
                                 'startDate' : new Date(Date.parse('12-01-2019')),
                                 'endDate' : new Date(Date.parse('12-09-2019'))
                             },
-                            'status' : 'pending'
+                            'status' : 'rejected'
                         }
                     ],
                     'reviews' : []
