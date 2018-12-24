@@ -1,7 +1,7 @@
 <html>
 <head>
     <%- include('bootstrap_head'); -%>
-    <title><%= tenant.name %>'s Profile Page</title>
+    <title><%= tenant.fullName %>'s Profile Page</title>
 </head>
 
 <body>
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header font-weight-bold"><%= tenant.name %>'s Profile</div>
+                <div class="card-header font-weight-bold"><%= tenant.fullName %>'s Profile</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">

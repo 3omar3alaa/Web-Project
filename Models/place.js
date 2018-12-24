@@ -40,7 +40,7 @@ ReviewSchema = new Schema({
         type: Number, //out of 5
         required: true
     }
-})
+});
 
 PlaceSchema = new Schema({
     ownerId: {
@@ -62,6 +62,10 @@ PlaceSchema = new Schema({
     availabilityIntervals:{
         type: [AvailabilityIntervalSchema],
         required: true
+    },
+    title:{
+      type : String,
+      required : true
     },
     description: {
         type: String,

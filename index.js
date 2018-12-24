@@ -12,8 +12,12 @@ const passport = require('passport');
 const config = require('./config/database');
 
 
+
+
+
 // setup express app
 const app = express();
+app.set('view engine', 'ejs');
 app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
@@ -22,9 +26,13 @@ app.use(flash());
 // setup public files
 // app.use(express.static(__dirname + '/public'));
 
-// Connect to database
-mongoose.connect('mongodb://localhost/airdb', { useNewUrlParser: true });
-mongoose.Promise = global.Promise;
+const seed = true;
+if (seed){
+    require('./helpers/db_routines').seed();
+}else{
+    mongoose.connect('mongodb://localhost/airdb', { useNewUrlParser: true });
+    mongoose.Promise = global.Promise;
+}
 
 
 // transform all coming requests into json format
@@ -103,6 +111,7 @@ app.get('/*', (req, res) => {
     // res.setHeader('Content-Type', 'text/html');
     // res.send(data);})
 });
+
 
 // Listening
 app.listen(process.env.PORT || 3000, () => {

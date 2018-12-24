@@ -1,0 +1,85 @@
+<html>
+<head>
+    <%- include('bootstrap_head'); -%>
+    <title>Pending Offers</title>
+    <script>
+        //TODO we can do better
+        function accept_offer(place_id, offer_id, owner_id){
+            const Http = new XMLHttpRequest();
+            const url = "/offer/accept/";
+            Http.open("GET", url);
+            Http.setRequestHeader('offerid', offer_id);
+            Http.setRequestHeader('placeid', place_id);
+            Http.setRequestHeader('ownerid', owner_id);
+            Http.send();
+            Http.onreadystatechange=(e)=>{
+                document.open();
+                document.write(Http.responseText);
+                document.close();
+            }
+        }
+        function reject_offer(place_id, offer_id, owner_id){
+            const Http = new XMLHttpRequest();
+            const url = "/offer/reject/";
+            Http.open("GET", url);
+            Http.setRequestHeader('offerid', offer_id);
+            Http.setRequestHeader('placeid', place_id);
+            Http.setRequestHeader('ownerid', owner_id);
+            Http.send();
+            Http.onreadystatechange=(e)=>{
+                document.open();
+                document.write(Http.responseText);
+                document.close();
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <% if(success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%=success%>
+            </div>
+            <% } %>
+            <% if(error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%=error%>
+            </div>
+            <% } %>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header font-weight-bold">Pending Offers Made For You</div>
+                <div class="card-body">
+                    <div class="row">
+                        <%for (var i=0; i<places.length;i++){%>
+                        <%for (var j=0; j<places[i].offersLog.length;j++) {%>
+                        <div class="col-12 alert alert-secondary" role="alert">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h4 class="alert-heading"><%=places[i].title%> <span class="badge badge-secondary">Pending</span> </h4>
+                                    <div><strong>Offer Start Date:</strong> <%=places[i].offersLog[j].offerInterval.startDate%> </div>
+                                    <div><strong>Offer End Date:</strong>  <%=places[i].offersLog[j].offerInterval.endDate%> </div>
+                                </div>
+                                <div class="col-4 align-self-center text-center">
+                                    <button class="btn btn-success" onclick="accept_offer('<%=places[i]._id%>', '<%=places[i].offersLog[j]._id.toString()%>','<%=owner._id%>')">Accept</button>
+                                    <button class="btn btn-danger" onclick="reject_offer('<%=places[i]._id%>', '<%=places[i].offersLog[j]._id.toString()%>','<%=owner._id%>')">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                        <%}%>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
