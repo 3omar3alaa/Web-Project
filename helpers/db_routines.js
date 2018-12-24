@@ -40,12 +40,12 @@ module.exports.seed = function(){
                             'status' : 'pending'
                         },
                         {
-                            'tenantId' : mongoose.Types.ObjectId('j5aaaaaaaaaa'),
+                            'tenantId' : mongoose.Types.ObjectId('y5aaaaaaaaaa'),
                             'offerInterval' : {
                                 'startDate' : new Date(Date.parse('01-16-2019')),
                                 'endDate' : new Date(Date.parse('02-09-2019'))
                             },
-                            'status' : 'accepted'
+                            'status' : 'pending'
                         }
                     ],
                     'reviews' : []
