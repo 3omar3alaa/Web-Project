@@ -1,0 +1,18 @@
+<%   
+avg_price = function (places){
+    prices = 0;
+    for(var i = 0; i< places.length; i++){
+        prices += places[i].price;
+    }
+    console.log("Prices are" + prices);
+    return Math.round(prices/places.length);
+}
+
+avg_size = function(places){
+    sizes = 0;
+    for (var i = 0; i< places.length; i++){
+        sizes += places[i].size;
+    }
+    return Math.round(sizes/places.length);
+}
+%>

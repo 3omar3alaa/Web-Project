@@ -2,6 +2,7 @@
     <head>
             <%- include('bootstrap_head'); -%>
             <%- include('header'); -%>
+            </style>
     </head>
 <!------ Include the above in your HEAD tag ---------->
 
@@ -46,5 +47,15 @@
         </nav> -->
 
     <!-- </nav> -->
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3" style="padding-top:20px">FireBnb</h1>
+                <p>Plan your next Holiday</p>
+                <% if (!user) {%>
+                    <p><a class="btn btn-primary btn-lg" href="/user/signup" role="button">Sign Up Now</a></p>
+                <% } %>
+            </div>
+        </div>
     </body>
 </html>

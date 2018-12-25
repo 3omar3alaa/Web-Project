@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <%- include('bootstrap_head'); -%>
     <%- include('header'); -%>
+    <%- include('stat_functions'); -%> 
 </head>
 
 <body>
@@ -29,6 +30,22 @@
                                     </div>
                                     <div class="col-9">
                                         <h6 class="font-weight-bold"><%= placesCount %> </h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Average Price</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= avg_price(places) %> $/day </h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Average Place Size</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= avg_size(places) %> m^2</h6>
                                     </div>
                                 </div>
                             </div>
