@@ -32,12 +32,8 @@ ReviewSchema = new Schema({
         type: String,
         required: true
     },
-    review_text: {
+    reviewText: {
         type: String,
-        required: true
-    },
-    review_score: {
-        type: Number, //out of 5
         required: true
     }
 });

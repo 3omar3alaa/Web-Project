@@ -40,7 +40,7 @@ module.exports.seed = function(){
                                 'startDate' : new Date(Date.parse('01-15-2019')),
                                 'endDate' : new Date(Date.parse('02-10-2019'))
                             },
-                            'status' : 'pending'
+                            'status' : 'accepted'
                         },
                         {
                             'tenantId' : mongoose.Types.ObjectId('y5aaaaaaaaaa'),
@@ -51,7 +51,16 @@ module.exports.seed = function(){
                             'status' : 'pending'
                         }
                     ],
-                    'reviews' : []
+                    'reviews' : [
+                        {
+                        'tenantId' : mongoose.Types.ObjectId('y5aaaaaaaaaa'),
+                        'reviewText' : 'THIS THING IS CRAZY. I REALLY LOVE IT SO MUCH!!!!'
+                        },
+                        {
+                            'tenantId' : mongoose.Types.ObjectId('y5aaaaaaaaaa'),
+                            'reviewText' : 'CHECK THIS OUT!!!!!!!!!!!!!!!!!!!!'
+                        }
+                    ]
                 },
                 {
                     '_id' : mongoose.Types.ObjectId('f5aaaaaaaaaa'),

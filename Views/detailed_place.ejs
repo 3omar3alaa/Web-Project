@@ -41,7 +41,59 @@
                             <h6 class="font-weight-light">Description</h6>
                         </div>
                         <div class="col-9">
-                            <h6 class="font-weight-bold"><%= place.description%></h6>
+                            <h6 class="font-weight-bold"><%= place.description %></h6>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="font-weight-light">Reviews
+                                <%if(settings.canReview){%>
+                                <button class="btn btn-success bs-tooltip-right" type="button" data-toggle="collapse" data-target="#filters" aria-expanded="true" aria-controls="filters">
+                                    Add Your Own Review
+                                </button>
+                                <%}%>
+                            </h3>
+                        </div>
+                    </div>
+                    <% if(success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%=success%>
+                    </div>
+                    <% } %>
+                    <% if(error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%=error%>
+                    </div>
+                    <% } %>
+                    <div class="row p-3 collapse"  id="filters">
+                        <div class="col-12">
+                            <div class="card card-body">
+                                <form action="/place/review/<%=place._id%>" method="get">
+                                    <div class="row p-1">
+                                        <div class="col-2">
+                                            <h6 class="font-weight-bold p-1">Your Review:</h6>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="input-group">
+                                                <textarea rows="2" type="text" name="review" class="form-control" id="address" placeholder="e.g Maadi"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 text-center align-self-center">
+                                            <button type="submit" class="btn btn-success">Add Review</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="list-group list-group-flush">
+                                <%for(let i = 0; i < place.reviews.length; i++) {%>
+                                <li class="list-group-item"><%=i+1+". "%><%=place.reviews[i].reviewText%></li>
+                                <%}%>
+                            </ul>
                         </div>
                     </div>
                 </div>
