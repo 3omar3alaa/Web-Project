@@ -10,7 +10,7 @@ module.exports.seed = function(){
                     'fullName' : 'Sample tenant',
                     'age' : 25,
                     'email' : 'paul.john@yolo.com',
-                    'mobileNumber' : 201220419909,
+                    'phone' : 201220419909,
                     'address' : 'Paris, In front of Eiffel Tower',
                     '_id' : mongoose.Types.ObjectId('y5aaaaaaaaaa')
                 }

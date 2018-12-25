@@ -99,6 +99,7 @@ app.use('/owner', require('./Controllers/owner'));
 app.get('/*', (req, res) => {
     // console.log(req.url);
     if (req.url == '/'){
+        console.log("Logged in user is");
         console.log(res.locals.user);
         res.render('home.ejs');
     }
