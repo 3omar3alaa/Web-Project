@@ -10,16 +10,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header font-weight-bold"><%= tenant.fullName %>'s Profile</div>
+                <div class="card-header font-weight-bold"><%= tenant.fullName %>'s Profile
+                    <% if(settings.canEdit){%>
+                    <a href="/tenant/edit" aria-pressed="true" role="button" class="btn btn-secondary active"><i class="far fa-edit"></i></a>
+                    <%}%>
+                </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-3">
-                            <h6 class="font-weight-light">Age</h6>
-                        </div>
-                        <div class="col-9">
-                            <h6 class="font-weight-bold"><%= tenant.age %></h6>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-3">
                             <h6 class="font-weight-light">Email</h6>
@@ -30,10 +26,10 @@
                     </div>
                     <div class="row">
                         <div class="col-3">
-                            <h6 class="font-weight-light">Mobile Number</h6>
+                            <h6 class="font-weight-light">Phone Number</h6>
                         </div>
                         <div class="col-9">
-                            <h6 class="font-weight-bold"><%= tenant.mobileNumber %></h6>
+                            <h6 class="font-weight-bold"><%= tenant.phone %></h6>
                         </div>
                     </div>
                     <div class="row">

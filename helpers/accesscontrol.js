@@ -6,4 +6,4 @@ module.exports.ensureAuthenticated = function ensureAuthenticated(req, res, next
     req.flash('danger', 'Please login');
     res.redirect('/user/signin');
   }
-}
+};

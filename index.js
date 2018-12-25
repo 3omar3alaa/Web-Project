@@ -12,9 +12,6 @@ const passport = require('passport');
 const config = require('./config/database');
 
 
-
-
-
 // setup express app
 const app = express();
 app.set('view engine', 'ejs');
