@@ -5,7 +5,7 @@
 </head>
 
 <body>
-
+<%- include('header'); -%>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -19,17 +19,7 @@
                             </div>
                             <div class="col-9">
                                 <div class="form-group">
-                                    <input type="text" name="name" placeholder="e.g: Demis Hassabis" value="<%= tenant.fullName %>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">
-                                <h6 class="font-weight-light">Age</h6>
-                            </div>
-                            <div class="col-9">
-                                <div class="form-group">
-                                    <input type="number" name="age" placeholder="e.g: 42" value="<%= tenant.age %>">
+                                    <input class="form-control" type="text" name="name" placeholder="e.g: Demis Hassabis" value="<%= tenant.fullName %>">
                                 </div>
                             </div>
                         </div>
@@ -39,7 +29,7 @@
                             </div>
                             <div class="col-9">
                                 <div class="form-group">
-                                    <input type="email" name="email" placeholder="e.g: d.hassabis@gmail.com" value="<%= tenant.email %>">
+                                    <input class="form-control" type="email" name="email" placeholder="e.g: d.hassabis@gmail.com" value="<%= tenant.email %>">
                                 </div>
                             </div>
                         </div>
@@ -49,7 +39,7 @@
                             </div>
                             <div class="col-9">
                                 <div class="form-group">
-                                    <input type="number" name="mobileNumber" placeholder="e.g: 01111111111" value="<%= tenant.mobileNumber %>">
+                                    <input class="form-control" type="number" name="phone" placeholder="e.g: 01111111111" value="<%= tenant.phone %>">
                                 </div>
                             </div>
                         </div>
@@ -59,7 +49,7 @@
                             </div>
                             <div class="col-9">
                                 <div class="form-group">
-                                    <input type="text" name="address" placeholder="e.g: Cairo, Maadi, St. 77, Building 57" value="<%= tenant.address %>">
+                                    <input class="form-control" type="text" name="address" placeholder="e.g: Cairo, Maadi, St. 77, Building 57" value="<%= tenant.address %>">
                                 </div>
                             </div>
                         </div>
