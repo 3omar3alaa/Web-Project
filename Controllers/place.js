@@ -5,7 +5,7 @@ const PlaceModel = require('../models/place');
 const mongoose = require('mongoose');
 const accesscontrol = require('../helpers/accesscontrol').ensureAuthenticated;
 
-router.get('/view_all', accesscontrol, function (req, res) {
+router.get('/view_all', function (req, res) {
    cond = {};
    if(req.query.min_size && req.query.max_size){
        cond.size = {$gte: parseFloat(req.query.min_size), $lte: parseFloat(req.query.max_size)};
