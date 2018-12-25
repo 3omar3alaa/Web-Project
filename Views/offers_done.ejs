@@ -9,7 +9,6 @@
             const url = "/offer/cancel/"+offer_id;
             Http.open("GET", url);
             Http.setRequestHeader('placeId', place_id);
-            Http.setRequestHeader('tenantId', tenant_id);
             Http.send();
             Http.onreadystatechange=(e)=>{
                 document.open();

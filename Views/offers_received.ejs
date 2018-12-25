@@ -10,7 +10,6 @@
             Http.open("GET", url);
             Http.setRequestHeader('offerid', offer_id);
             Http.setRequestHeader('placeid', place_id);
-            Http.setRequestHeader('ownerid', owner_id);
             Http.send();
             Http.onreadystatechange=(e)=>{
                 document.open();
@@ -24,7 +23,6 @@
             Http.open("GET", url);
             Http.setRequestHeader('offerid', offer_id);
             Http.setRequestHeader('placeid', place_id);
-            Http.setRequestHeader('ownerid', owner_id);
             Http.send();
             Http.onreadystatechange=(e)=>{
                 document.open();

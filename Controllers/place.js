@@ -34,13 +34,48 @@ router.get('/view_all', accesscontrol, function (req, res) {
 
 });
 
-router.get('/view/:placeid', accesscontrol, function (req, res){
+router.get('/review/:placeid', accesscontrol, function (req, res) {
     PlaceModel.findById(req.params.placeid).lean().exec(function (err, doc) {
-        res.render('detailed_place', {place : doc});
+        if(err){
+            req.flash('error', 'Error! Please try again.');
+            res.redirect('/place/view/'+req.params.placeid);
+        }
+        else if(!canMakeReview(req.user._doc._id, doc)){
+            req.flash('error', "You can't review places you haven't been accepted in.");
+            res.redirect('/place/view/'+req.params.placeid);
+        }
+        else{
+            doc.reviews.push({tenantId : req.user._doc._id, reviewText : req.query.review});
+            PlaceModel.findByIdAndUpdate({_id : req.params.placeid}, doc).lean().exec(function (err, doc2){
+                if(err){
+                    req.flash('error', 'Error! Please try again.');
+                    res.redirect('/place/view/'+req.params.placeid);
+                }else{
+                    req.flash('success', "Review added!");
+                    res.redirect('/place/view/'+req.params.placeid);
+                }
+            });
+        }
     });
 });
 
+router.get('/view/:placeid', accesscontrol, function (req, res){
+    PlaceModel.findById(req.params.placeid).lean().exec(function (err, doc) {
+        res.render('detailed_place', {place : doc, settings : { canReview : canMakeReview(req.user._doc._id, doc)},
+            success: req.flash('success'), error: req.flash('error')});
+    });
+});
 
+function canMakeReview(userId, placeDoc){
+    let canReview = false;
+    for (let i = 0; i < placeDoc.offersLog.length; i++){
+        if (placeDoc.offersLog[i].tenantId == userId && placeDoc.offersLog[i].status == 'accepted'){
+            canReview = true;
+            break;
+        }
+    }
+    return canReview;
+}
 
 module.exports = router;
 
