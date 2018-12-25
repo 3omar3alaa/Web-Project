@@ -8,41 +8,45 @@
     <body>
 
         <!-- Form Name -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">FireBnb</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand font-weight-bold text-lg-lef" href="/">FireBnb</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav>
+        <div class="container">
+            <form class="form-horizontal" method="POST" action="/user/signin">
 
-        <form class="form-horizontal" method="POST" action="/user/signin">
+            <!-- Text input-->
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="fn">Username</label>  
+            <div class="col-md-12">
+            <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
+                
+            </div>
+            </div>
 
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="fn">Username</label>  
-        <div class="col-md-12">
-        <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
-            
-        </div>
-        </div>
+            <!-- Text input-->
 
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="ln">Password</label>  
-        <div class="col-md-12">
-        <input id="password" name="password" type="Password" placeholder="Password" class="form-control input-md" required="">
-            
-        </div>
-        </div>
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="ln">Password</label>  
+            <div class="col-md-12">
+            <input id="password" name="password" type="Password" placeholder="Password" class="form-control input-md" required="">
+                
+            </div>
+            </div>
 
-        <!-- Button -->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="submit"></label>
-        <div class="col-md-4">
-            <button id="submit" name="submit" class="btn btn-primary">SIGN IN</button>
-        </div>
-        </div>
+            <!-- Button -->
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+                <button id="submit" name="submit" class="btn btn-primary">SIGN IN</button>
+            </div>
+            </div>
 
 
-        </form>
+            </form>
+            <h5> Don't have an account</h5>
+            <h5><a href='/user/signup'>Click here to Sign Up </a></h5>
+        </div>
     </body>

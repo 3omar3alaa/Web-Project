@@ -22,14 +22,14 @@ router.post('/add_place', function(req, res){
         'endDate': null
     };
 
-    var i = 0;
-    for (i = 0; i < availableTimeIntervals.length; i++){
-        if (i % 2 == 1){
+    var count = 0
+    for (var i = 0; i < availableTimeIntervals.length; i++){
+        if (i % 2 == 0){
             interval.startDate = new Date(Date.parse(availableTimeIntervals[i]));
         }
         else{
             interval.endDate = new Date(Date.parse(availableTimeIntervals[i]));
-            availabilityIntervals.push(interval);
+            availabilityIntervals.push(cloneMessage(interval));
         }
     }
         
@@ -61,14 +61,7 @@ router.post('/add_place', function(req, res){
             res.redirect('/');
         }
     });
-    // console.log("Insha'allah", availabilityIntervals);
-    // console.log("Available time intervals " + availableTimeIntervals);
-    //console.log("Length of time intervals " + availableTimeIntervals.length)
-
     console.log("ID of user is" + req.user._id);
-    // ownerModel.find({}).then((data)=> {
-    //     res.send(data)
-    // })
 });
 
 
@@ -77,8 +70,25 @@ router.get('/view_places', accesscontrol ,function(req, res){
     // ownerModel.find({}).then((data)=> {
     //     res.send(data)
     // })
-    res.render('view_places.ejs');
+    Place.find({ownerId: req.user._id}).then((data) => {
+        for(var i = 0; i< data.length; i++){
+            for(var j = 0; j< data[i].availabilityIntervals.length; j++){
+                console.log(data[i].availabilityIntervals[j]);
+            }
+        }
+        res.render('view_places.ejs', { places: data});
+    });
 });
+
+// // delete place user from the db
+// router.delete('/:id', function(req, res){
+//     Place.findByIdAndRemove({_id: req.params.id}).then(function(data){
+//         res.send(data);
+//     })
+//     // ownerModel.remove({}).then((data)=>{
+//     //     res.send(data);
+//     // });
+// });
 
 
 // // 5c1e84e1d7afab1d282a425c
@@ -125,14 +135,14 @@ router.get('/view_places', accesscontrol ,function(req, res){
 //     // })
 // });
 
-// // delete a user from the db
-// router.delete('/', function(req, res){
-//     // ownerModel.findByIdAndRemove({_id: req.params.id}).then(function(data){
-//     //     res.send(data);
-//     // })
-//     ownerModel.remove({}).then((data)=>{
-//         res.send(data);
-//     });
-// });
+
+function cloneMessage(interval) {
+    var clone ={};
+    for( var key in interval ){
+        if(interval.hasOwnProperty(key)) //ensure not adding inherited props
+            clone[key]=interval[key];
+    }
+    return clone;
+}
 
 module.exports = router;

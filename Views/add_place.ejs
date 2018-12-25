@@ -1,110 +1,107 @@
 <html>
     <head>
-			<%- include('bootstrap_head'); -%>
-			<script>
-				$(document).ready(function() {
-				var wrapper         = $("#availabilityIntervalsDiv"); 
-				var add_button      = $("#Add_Interval"); 
+		<%- include('bootstrap_head'); -%>
+		<%- include('header'); -%>
+		<script>
+			$(document).ready(function() {
+			var wrapper         = $("#availabilityIntervalsDiv"); 
+			var add_button      = $("#Add_Interval"); 
 
-				$(add_button).click(function(e){ 
-					e.preventDefault();
-					$(wrapper).append('<label class="col-md-4 control-label">From</label><div class="col-md-6"><input id="startDate" name="availabilityIntervals[]" value="startDate" type="Date" placeholder="Phone" class="form-control input-md" required=""><label class="col-md-4 control-label" >To</label><div class="col-md-6"><input id="endDate" name="availabilityIntervals[]" value="endDate" type="Date" placeholder="Phone" class="form-control input-md" required=""></div>'); //add input box
-				});
-				
-				$(wrapper).on("click",".delete", function(e){ 
-					e.preventDefault(); $(this).parent('div').remove();	})
+			$(add_button).click(function(e){ 
+				e.preventDefault();
+				$(wrapper).append('<label class="col-md-4 control-label">From</label><div class="col-md-6"><input id="startDate" name="availabilityIntervals[]" value="startDate" type="Date" placeholder="Phone" class="form-control input-md" required=""><label class="col-md-4 control-label" >To</label><div class="col-md-6"><input id="endDate" name="availabilityIntervals[]" value="endDate" type="Date" placeholder="Phone" class="form-control input-md" required=""></div>'); //add input box
 			});
-			</script>
-            <title>Add Place</title>
+			
+			$(wrapper).on("click",".delete", function(e){ 
+				e.preventDefault(); $(this).parent('div').remove();	})
+		});
+		</script>
+		<title>Add Place</title>
     </head>
 <!------ Include the above in your HEAD tag ---------->
 
     <body>
 
         <!-- Form Name -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">FireBnb</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-		<h2> Add Place </h2>
-        <form class="form-horizontal" method="POST" action="/owner/add_place">
+		<div class="container">
+			<h2> Add Place </h2>
+			<form class="form-horizontal" method="POST" action="/owner/add_place">
 
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="fn">Title</label>  
-        <div class="col-md-12">
-        <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="ln">Description</label>  
-        <div class="col-md-12">
-        <input id="description" name="description" type="text" placeholder="Description" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="cmpny">Size</label>  
-        <div class="col-md-12">
-        <input id="size" name="size" type="Number" placeholder="Size" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" >Price</label>  
-        <div class="col-md-12">
-        <input id="price" name="price" type="Number" placeholder="Price" class="form-control input-md" required="">
-            
-        </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="availabilityIntervals" >
-			<label class="col-md-4 control-label">Available Time Intervals</label>  
-        <div id = "availabilityIntervalsDiv">
-			<label class="col-md-4 control-label">From</label>  
-			<div class="col-md-6">
-			<input id="startDate" name="availabilityIntervals[]" value="startDate" type="Date" placeholder="Phone" class="form-control input-md" required="">
+			<!-- Text input-->
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="fn">Title</label>  
+			<div class="col-md-12">
+			<input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="">
 				
-			<label class="col-md-4 control-label" >To</label>  
-			<div class="col-md-6">
-			<input id="endDate" name="availabilityIntervals[]" value="endDate" type="Date" placeholder="Phone" class="form-control input-md" required="">
 			</div>
-        </div>
-		</div>
-	
-		<div class="col-md-4">
-			<br>
-			<button id="Add_Interval" name="" class="btn btn-primary" >Add Another Interval</button>
-			<br>
-        </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="ln">Description</label>  
+			<div class="col-md-12">
+			<input id="description" name="description" type="text" placeholder="Description" class="form-control input-md" required="">
 				
-        <!-- Text input-->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="add1">Address </label>  
-        <div class="col-md-12">
-        <input id="address" name="address" type="text" placeholder="Address" class="form-control input-md" required="">
-            
-        </div>
-        </div>
+			</div>
+			</div>
 
-        <!-- Button -->
-        <div class="form-group">
-        <label class="col-md-4 control-label" for="submit"></label>
-        <div class="col-md-4">
-            <button id="submit" name="submit" class="btn btn-primary">ADD</button>
-        </div>
-        </div>
+			<!-- Text input-->
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="cmpny">Size</label>  
+			<div class="col-md-12">
+			<input id="size" name="size" type="Number" placeholder="Size" class="form-control input-md" required="">
+				
+			</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			<label class="col-md-4 control-label" >Price</label>  
+			<div class="col-md-12">
+			<input id="price" name="price" type="Number" placeholder="Price" class="form-control input-md" required="">
+				
+			</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="availabilityIntervals" >
+				<label class="col-md-4 control-label">Available Time Intervals</label>  
+			<div id = "availabilityIntervalsDiv">
+				<label class="col-md-4 control-label">From</label>  
+				<div class="col-md-6">
+				<input id="startDate" name="availabilityIntervals[]" value="startDate" type="Date" placeholder="Phone" class="form-control input-md" required="">
+					
+				<label class="col-md-4 control-label" >To</label>  
+				<div class="col-md-6">
+				<input id="endDate" name="availabilityIntervals[]" value="endDate" type="Date" placeholder="Phone" class="form-control input-md" required="">
+				</div>
+			</div>
+			</div>
+		
+			<div class="col-md-4">
+				<br>
+				<button id="Add_Interval" name="" class="btn btn-primary" >Add Another Interval</button>
+				<br>
+			</div>
+					
+			<!-- Text input-->
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="add1">Address </label>  
+			<div class="col-md-12">
+			<input id="address" name="address" type="text" placeholder="Address" class="form-control input-md" required="">
+				
+			</div>
+			</div>
+
+			<!-- Button -->
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="submit"></label>
+			<div class="col-md-4">
+				<button id="submit" name="submit" class="btn btn-primary">ADD</button>
+			</div>
+			</div>
 
 
-        </form>
+			</form>
+		</div>
     </body>

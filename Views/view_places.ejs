@@ -2,26 +2,115 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <%- include('bootstrap_head'); -%>
+    <%- include('header'); -%>
+    <script>
+        $(document).ready(function(){
+            $('#delete_place').on('click', function(e){
+                $target = $(e.target);
+                const id = $target.attr('place-id');
+                $.ajax({
+                type:'DELETE',
+                url: '/owner/'+id,
+                success: function(response){
+                    alert('Deleting Place');
+                    window.location.href='/';
+                },
+                error: function(err){
+                    console.log(err);
+                }
+                });
+            });
+        });
+    </script>
+
 </head>
 
 <body>
-    <section class="home">
-    <h1>Places</h1>
-    <a href='/'> Home  </a>
+    <div class="container">
+        <h2>Places</h2>
+    </div>
+    <% if(places.length == 0) {%>
+        <div class="container">
+            <h4>You have not added any place</h4>
+            <h4><a href='/owner/add_place'>Click here to add </a></h4>
+        </div>
+    <%} else {%>
+
+
     <ul class="list-group">
-        <% for(var i=0; i<places.length; i++) {%>
-            <li class="list-group-item">
-                <span>Address: </span><%= places[i].address %>
-                <br/>
-                <span>Size: </span><%= places[i].size %>
-                <br/>
-                <span>Price: </span><%= places[i].price %>  
-                <br/>
-                <span>Notes: </span><%= places[i].notes %>              
-            </li>
+        <% for(var i=0; i < places.length; i++) {%>
+               <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header font-weight-bold"><%= places[i].title %></div>
+                            <a href="/owner/" class="btn btn-outline-danger float-right" id="delete_place" place-id= <%= places[i]._id %> >Delete</a>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Price</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= places[i].price %> $/day</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Size</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= places[i].size %> m^2</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Address</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= places[i].address %></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Description</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= places[i].description%></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Available Time Intervals</h6>
+                                    </div>
+                                </div>
+                                    <% for(var j=0; j < places[i].availabilityIntervals.length; j++) {%>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <h6 class="font-weight-light">From</h6>
+                                            </div>
+                                            <div class="col-9">
+                                                <h6 class="font-weight-bold"><%= places[i].availabilityIntervals[j].startDate%></h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <h6 class="font-weight-light">To</h6>
+                                            </div>
+                                            <div class="col-9">
+                                                <h6 class="font-weight-bold"><%= places[i].availabilityIntervals[j].endDate%></h6>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
         <% } %>
     </ul>
+    <% } %>
     </section>
 </body>
 
