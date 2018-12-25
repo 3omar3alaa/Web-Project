@@ -52,20 +52,20 @@ PlaceSchema = new Schema({
         required: true
     },
     price:{
-        type: Number,
+        type: Number, //per day
         required: true
     },
     size:{
         type: Number,
         required: true
     },
+    address:{
+      type: String,
+      required: true
+    },
     availabilityIntervals:{
         type: [AvailabilityIntervalSchema],
         required: true
-    },
-    title:{
-      type : String,
-      required : true
     },
     description: {
         type: String,

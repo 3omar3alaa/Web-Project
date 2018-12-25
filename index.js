@@ -89,6 +89,7 @@ app.get('*', function(req, res, next){
 app.use('/tenant', require('./Controllers/tenant'));
 app.use('/offer', require('./Controllers/offer'));
 app.use('/user', require('./Controllers/registration'));
+app.use('/place', require('./Controllers/place'));
 // app.get('/*', (req, res) => {
 // 	res.render('index.html');
 // });

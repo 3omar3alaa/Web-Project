@@ -23,6 +23,9 @@ module.exports.seed = function(){
                     '_id' : mongoose.Types.ObjectId('b5aaaaaaaaaa'),
                     'title' : 'Paris Place',
                     'ownerId' : mongoose.Types.ObjectId('a5aaaaaaaaaa'),
+                    'price': 10,
+                    'size' : 200,
+                    'address': 'Eiffel tower',
                     'availabilityIntervals': [
                         {
                             'startDate' : new Date(Date.parse('01-13-2019')),
@@ -54,6 +57,9 @@ module.exports.seed = function(){
                     '_id' : mongoose.Types.ObjectId('f5aaaaaaaaaa'),
                     'title' : 'Villa on Main Street',
                     'ownerId' : mongoose.Types.ObjectId('g5aaaaaaaaaa'),
+                    'price': 15,
+                    'size' : 250,
+                    'address': 'Eiffel',
                     'availabilityIntervals': [
                         {
                             'startDate' : new Date(Date.parse('11-13-2019')),
