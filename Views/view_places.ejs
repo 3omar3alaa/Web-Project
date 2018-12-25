@@ -3,6 +3,27 @@
 <head>
     <meta charset="utf-8">
     <%- include('bootstrap_head'); -%>
+
+    <script>
+        $(document).ready(function(){
+            $('#delete_place').on('click', function(e){
+                $target = $(e.target);
+                const id = $target.attr('place-id');
+                $.ajax({
+                type:'DELETE',
+                url: '/owner/'+id,
+                success: function(response){
+                    alert('Deleting Article');
+                    window.location.href='/';
+                },
+                error: function(err){
+                    console.log(err);
+                }
+                });
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -24,7 +45,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header font-weight-bold"><%= places[i].title %></div>
-                            <a href="#" class="btn btn-outline-danger float-right">Delete</a>
+                            <a href="/owner/" class="btn btn-outline-danger float-right" id="delete_place" place-id= <%= places[i]._id %> >Delete</a>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-3">
