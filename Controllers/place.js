@@ -22,13 +22,13 @@ router.get('/view_all', function (req, res) {
         cond.price = {$lt: parseFloat(req.query.max_price)};
     }
 
-    if(req.query.location){
-        cond.address = new RegExp(req.query.location, "i");
+    if(req.query.address){
+        cond.address = new RegExp(req.query.address, "i");
     }
 
 
    PlaceModel.find(cond, function (err, doc) {
-       res.send(doc);
+       res.render('find_places', {places : doc, query : req.query});
    })
 
 });
