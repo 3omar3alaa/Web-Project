@@ -26,7 +26,7 @@ app.use(flash());
 // setup public files
 // app.use(express.static(__dirname + '/public'));
 
-const seed = true;
+const seed = false;
 if (seed){
     require('./helpers/db_routines').seed();
 }else{
@@ -99,6 +99,7 @@ app.use('/owner', require('./Controllers/owner'));
 app.get('/*', (req, res) => {
     // console.log(req.url);
     if (req.url == '/'){
+        console.log("Logged in user is");
         console.log(res.locals.user);
         res.render('home.ejs');
     }
