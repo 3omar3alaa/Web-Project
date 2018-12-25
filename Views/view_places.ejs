@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <%- include('bootstrap_head'); -%>
-
+    <%- include('header'); -%>
     <script>
         $(document).ready(function(){
             $('#delete_place').on('click', function(e){
@@ -13,7 +13,7 @@
                 type:'DELETE',
                 url: '/owner/'+id,
                 success: function(response){
-                    alert('Deleting Article');
+                    alert('Deleting Place');
                     window.location.href='/';
                 },
                 error: function(err){
@@ -27,13 +27,13 @@
 </head>
 
 <body>
-    <section class="home">
-    <h1><a href='/'> FireBnb  </a><h1>
-    <h1>Places</h1>
+    <div class="container">
+        <h2>Places</h2>
+    </div>
     <% if(places.length == 0) {%>
         <div class="container">
-            <h1>You have not added any place</h1>
-            <h1><a href='/owner/add_place'>Click here to add </a></h1>
+            <h4>You have not added any place</h4>
+            <h4><a href='/owner/add_place'>Click here to add </a></h4>
         </div>
     <%} else {%>
 

@@ -1,33 +1,28 @@
 <html>
     <head>
-			<%- include('bootstrap_head'); -%>
-			<script>
-				$(document).ready(function() {
-				var wrapper         = $("#availabilityIntervalsDiv"); 
-				var add_button      = $("#Add_Interval"); 
+		<%- include('bootstrap_head'); -%>
+		<%- include('header'); -%>
+		<script>
+			$(document).ready(function() {
+			var wrapper         = $("#availabilityIntervalsDiv"); 
+			var add_button      = $("#Add_Interval"); 
 
-				$(add_button).click(function(e){ 
-					e.preventDefault();
-					$(wrapper).append('<label class="col-md-4 control-label">From</label><div class="col-md-6"><input id="startDate" name="availabilityIntervals[]" value="startDate" type="Date" placeholder="Phone" class="form-control input-md" required=""><label class="col-md-4 control-label" >To</label><div class="col-md-6"><input id="endDate" name="availabilityIntervals[]" value="endDate" type="Date" placeholder="Phone" class="form-control input-md" required=""></div>'); //add input box
-				});
-				
-				$(wrapper).on("click",".delete", function(e){ 
-					e.preventDefault(); $(this).parent('div').remove();	})
+			$(add_button).click(function(e){ 
+				e.preventDefault();
+				$(wrapper).append('<label class="col-md-4 control-label">From</label><div class="col-md-6"><input id="startDate" name="availabilityIntervals[]" value="startDate" type="Date" placeholder="Phone" class="form-control input-md" required=""><label class="col-md-4 control-label" >To</label><div class="col-md-6"><input id="endDate" name="availabilityIntervals[]" value="endDate" type="Date" placeholder="Phone" class="form-control input-md" required=""></div>'); //add input box
 			});
-			</script>
-            <title>Add Place</title>
+			
+			$(wrapper).on("click",".delete", function(e){ 
+				e.preventDefault(); $(this).parent('div').remove();	})
+		});
+		</script>
+		<title>Add Place</title>
     </head>
 <!------ Include the above in your HEAD tag ---------->
 
     <body>
 
         <!-- Form Name -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">FireBnb</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-		</nav>
 		<div class="container">
 			<h2> Add Place </h2>
 			<form class="form-horizontal" method="POST" action="/owner/add_place">

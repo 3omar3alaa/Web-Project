@@ -80,15 +80,15 @@ router.get('/view_places', accesscontrol ,function(req, res){
     });
 });
 
-// delete place user from the db
-router.delete('/:id', function(req, res){
-    Place.findByIdAndRemove({_id: req.params.id}).then(function(data){
-        res.send(data);
-    })
-    // ownerModel.remove({}).then((data)=>{
-    //     res.send(data);
-    // });
-});
+// // delete place user from the db
+// router.delete('/:id', function(req, res){
+//     Place.findByIdAndRemove({_id: req.params.id}).then(function(data){
+//         res.send(data);
+//     })
+//     // ownerModel.remove({}).then((data)=>{
+//     //     res.send(data);
+//     // });
+// });
 
 
 // // 5c1e84e1d7afab1d282a425c
