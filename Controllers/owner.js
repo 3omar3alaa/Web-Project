@@ -71,23 +71,38 @@ router.get('/view_places', accesscontrol ,function(req, res){
     //     res.send(data)
     // })
     Place.find({ownerId: req.user._id}).then((data) => {
-        for(var i = 0; i< data.length; i++){
-            for(var j = 0; j< data[i].availabilityIntervals.length; j++){
-                console.log(data[i].availabilityIntervals[j]);
-            }
-        }
+        // for(var i = 0; i< data.length; i++){
+        //     for(var j = 0; j< data[i].availabilityIntervals.length; j++){
+        //         console.log(data[i].availabilityIntervals[j]);
+        //     }
+        // }
         res.render('view_places.ejs', { places: data});
     });
 });
 
-// // delete place user from the db
-// router.delete('/:id', function(req, res){
-//     Place.findByIdAndRemove({_id: req.params.id}).then(function(data){
-//         res.send(data);
-//     })
-//     // ownerModel.remove({}).then((data)=>{
+router.delete('/:id', function(req, res){
+    if(!req.user._id){
+        res.status(500).send();
+    }
+    let query = {_id:req.params.id}
+
+    Place.remove(query, function(err){
+    if(err){
+        console.log(err);
+    }
+        res.send('Success');
+    });
+
+});
+
+// // delete a user from the db
+// router.delete('/', function(req, res){
+//     // ownerModel.findByIdAndRemove({_id: req.params.id}).then(function(data){
 //     //     res.send(data);
-//     // });
+//     // })
+//     ownerModel.remove({}).then((data)=>{
+//         res.send(data);
+//     });
 // });
 
 

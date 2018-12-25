@@ -1,0 +1,43 @@
+<html >
+
+<head>
+    <meta charset="utf-8">
+    <%- include('bootstrap_head'); -%>
+    <%- include('header'); -%>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="list-group">
+                <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header font-weight-bold"><h2>Statistics</h2></div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Users Count</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%=  usersCount %></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Places Count</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= placesCount %> </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </ul>
+    </div>
+</body>
+
+</html>

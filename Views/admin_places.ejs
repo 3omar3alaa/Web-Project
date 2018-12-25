@@ -5,28 +5,29 @@
     <%- include('bootstrap_head'); -%>
     <%- include('header'); -%>
     <script>
-        $(document).ready(function(){
-            console.log("In places of owner");
-            $('#delete_place').on('click', function(e){
-                $target = $(e.target);
-                const id = $target.attr('place-id');
-                // $.ajax({
-                // type:'DELETE',
-                // url: '/owner/'+id,
-                // success: function(response){
-                //     alert('Deleting Place');
-                //     window.location.href='/';
-                // },
-                // error: function(err){
-                //     console.log(err);
-                // }
-                // });
-            });
-        });
+        // $(document).ready(function(){
+        //     console.log("READDDYYY");
+        //     $('#delete_place').on('click', function(e){
+        //         $target = $(e.target);
+        //         const id = $target.attr('place-id');
+        //         console.log("id is" + id);
+        //         $.ajax({
+        //         type:'DELETE',
+        //         url: '/placedel/'+ id,
+        //         success: function(response){
+        //             alert('Deleting Place');
+        //             window.location.href='/';
+        //         },
+        //         error: function(err){
+        //             console.log(err);
+        //         }
+        //         });
+        //     });
+        // });
         function delete_place(place_id){
             console.log("The id is "+ place_id);
             const Http = new XMLHttpRequest();
-            const url = "/owner/"+ place_id;
+            const url = "/admin/place/"+ place_id;
             Http.open("DELETE", url);
             Http.setRequestHeader('placeId', place_id);
             Http.send();
@@ -36,7 +37,7 @@
                 // document.close();
                 window.location.href='/';
             }
-        }        
+        }
     </script>
 
 </head>
@@ -45,14 +46,6 @@
     <div class="container">
         <h2>Places</h2>
     </div>
-    <% if(places.length == 0) {%>
-        <div class="container">
-            <h4>You have not added any place</h4>
-            <h4><a href='/owner/add_place'>Click here to add </a></h4>
-        </div>
-    <%} else {%>
-
-
     <ul class="list-group">
         <% for(var i=0; i < places.length; i++) {%>
                <div class="container">
@@ -60,8 +53,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header font-weight-bold"><%= places[i].title %></div>
-                            <!-- <a href="/owner/" class="btn btn-outline-danger float-right" id="delete_place" place-id= <%= places[i]._id %> >Delete</a> -->
-                            <button class="btn btn-outline-danger" onclick="delete_place('<%=places[i]._id%>')">Delete</button>
+                            <!-- <a href="#" class="btn btn-outline-danger float-right" id="delete_place" place-id= <%= places[i]._id %> >Delete</a>  -->
+                             <button class="btn btn-outline-danger" onclick="delete_place('<%=places[i]._id%>')">Delete</button> 
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-3">
@@ -126,8 +119,6 @@
 
         <% } %>
     </ul>
-    <% } %>
-    </section>
 </body>
 
 </html>

@@ -87,28 +87,14 @@ app.use('/tenant', require('./Controllers/tenant'));
 app.use('/offer', require('./Controllers/offer'));
 app.use('/user', require('./Controllers/registration'));
 app.use('/place', require('./Controllers/place'));
-// app.get('/*', (req, res) => {
-// 	res.render('index.html');
-// });
 app.use('/admin', require('./Controllers/admin'));
 app.use('/owner', require('./Controllers/owner'));
-// app.use('/api/tenant', require('./Controllers/tenant'));
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
     // console.log(req.url);
-    if (req.url == '/'){
-        console.log("Logged in user is");
-        console.log(res.locals.user);
-        res.render('home.ejs');
-    }
-    else{
-        data= fs.readFile('./Views/' + req.url,   function (err, data) {
-        res.setHeader('Content-Type', 'text/html');
-        res.send(data);})
-    }
-    // res.render('cart.ejs');
-    // data= fs.readFile('./Views/' + req.url,   function (err, data) {
-    // res.setHeader('Content-Type', 'text/html');
-    // res.send(data);})
+    console.log("Logged in user is");
+    console.log(res.locals.user);
+    res.render('home.ejs');
+
 });
 
 

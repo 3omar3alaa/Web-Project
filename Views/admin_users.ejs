@@ -1,0 +1,79 @@
+<html >
+
+<head>
+    <meta charset="utf-8">
+    <%- include('bootstrap_head'); -%>
+    <%- include('header'); -%>
+    <script>
+        function delete_user(user_id){
+            console.log("The id is "+ user_id);
+            const Http = new XMLHttpRequest();
+            const url = "/admin/user/"+ user_id;
+            Http.open("DELETE", url);
+            Http.setRequestHeader('user_id', user_id);
+            Http.send();
+            Http.onreadystatechange=(e)=>{
+                window.location.href='/';
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Users</h2>
+    </div>
+    <ul class="list-group">
+        <% for(var i=0; i < users.length; i++) {%>
+               <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header font-weight-bold"><%= users[i].username %></div>
+                            <!-- <a href="#" class="btn btn-outline-danger float-right" id="delete_place" place-id= <%= users[i]._id %> >Delete</a>  -->
+                             <button class="btn btn-outline-danger" onclick="delete_user('<%=users[i]._id%>')">Delete</button> 
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Fullname</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= users[i].fullName %></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Email</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= users[i].email %></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Phone</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= users[i].phone %></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <h6 class="font-weight-light">Address</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <h6 class="font-weight-bold"><%= users[i].address%></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+        <% } %>
+    </ul>
+</body>
+
+</html>
