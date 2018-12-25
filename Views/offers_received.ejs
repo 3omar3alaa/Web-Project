@@ -36,7 +36,7 @@
 </head>
 
 <body>
-
+<%- include('header'); -%>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -61,7 +61,7 @@
                         <div class="col-12 alert alert-secondary" role="alert">
                             <div class="row">
                                 <div class="col-8">
-                                    <h4 class="alert-heading"><%=places[i].title%> <span class="badge badge-secondary">Pending</span> </h4>
+                                    <h4 class="alert-heading"><a href="/place/view/<%=places[i]._id%>"><%=places[i].title%> </a>  <span class="badge badge-secondary">Pending</span> </h4>
                                     <div><strong>Offer Start Date:</strong> <%=places[i].offersLog[j].offerInterval.startDate%> </div>
                                     <div><strong>Offer End Date:</strong>  <%=places[i].offersLog[j].offerInterval.endDate%> </div>
                                 </div>
