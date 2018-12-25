@@ -1,0 +1,102 @@
+<html>
+<head>
+    <%- include('bootstrap_head'); -%>
+    <title>Find Places</title>
+</head>
+<div class="container">
+    <div class="row p-3">
+        <div class="col-12">
+            <button class="btn btn-success col-12" type="button" data-toggle="collapse" data-target="#filters" aria-expanded="true" aria-controls="filters">
+                Filter Options
+            </button>
+        </div>
+    </div>
+    <div class="row p-3 collapse"  id="filters">
+        <div class="col-12">
+            <div class="card card-body">
+                <form action="/place/view_all" method="get">
+                    <div class="row p-1">
+                        <div class="col-2">
+                            <h6 class="font-weight-bold p-1">Size:</h6>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Min</div>
+                                </div>
+                                <input type="number" name="min_size" class="form-control" id="min_size" value="<%=query.min_size%>" placeholder="Min size in m^2 (optional)">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Max</div>
+                                </div>
+                                <input type="number" name="max_size" class="form-control" id="max_size" value="<%=query.max_size%>" placeholder="Max size in m^2 (optional)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-2">
+                            <h6 class="font-weight-bold p-1">Price:</h6>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Min</div>
+                                </div>
+                                <input type="number" name="min_price" class="form-control" id="min_price" value="<%=query.min_price%>" placeholder="Min price in $/day (optional)">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Max</div>
+                                </div>
+                                <input type="number" name="max_price" class="form-control" id="max_price" value="<%=query.max_price%>" placeholder="Max price in $/day (optional)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-2">
+                            <h6 class="font-weight-bold p-1">Address:</h6>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <input type="text" name="address" class="form-control" id="address" value="<%=query.address%>" placeholder="e.g Maadi">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success col-12 m-2">Filter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row p-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header font-weight-bold">Places</div>
+                <div class="card-body">
+                    <%for (var i=0; i<places.length;i++){%>
+                    <div class="row">
+                        <div class="col-12 alert alert-primary" role="alert">
+                            <h4 class="alert-heading"><a href="/place/view/<%=places[i]._id%>"><%=places[i].title%> </a> </h4>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div><strong>Address: </strong><%=places[i].address%> </div>
+                                    <div><strong>Size: </strong><%=places[i].size%> </div>
+                                    <div><strong>Price: </strong><%=places[i].price%> </div>
+                                </div>
+                                <div class="col-8">
+                                    <div><strong>Description: </strong> <%=places[i].description.substr(0, 140)%> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
