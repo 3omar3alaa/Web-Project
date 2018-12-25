@@ -104,9 +104,14 @@ router.delete('/place/:id', function(req, res){
     // });
 
     console.log("Inside delete admin, id is "+ req.params.id);
-    Place.findByIdAndRemove({_id: req.params.id}).then(function(data){
-        res.redirect('/');
-    });
+    try{
+        Place.findByIdAndRemove({_id: req.params.id}).then(function(data){
+            res.redirect('/');
+        });
+    }catch(e){
+        console.log(e);
+    }
+
 });
 
 router.delete('/user/:id', function(req, res){
