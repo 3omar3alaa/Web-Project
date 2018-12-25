@@ -26,7 +26,7 @@ app.use(flash());
 // setup public files
 // app.use(express.static(__dirname + '/public'));
 
-const seed = true;
+const seed = false;
 if (seed){
     require('./helpers/db_routines').seed();
 }else{

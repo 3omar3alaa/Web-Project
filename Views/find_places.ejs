@@ -80,7 +80,7 @@
                     <%for (var i=0; i<places.length;i++){%>
                     <div class="row">
                         <div class="col-12 alert alert-primary" role="alert">
-                            <h4 class="alert-heading"><%=places[i].title%> </h4>
+                            <h4 class="alert-heading"><a href="/place/view/<%=places[i]._id%>"><%=places[i].title%> </a> </h4>
                             <div class="row">
                                 <div class="col-4">
                                     <div><strong>Address: </strong><%=places[i].address%> </div>
@@ -88,7 +88,7 @@
                                     <div><strong>Price: </strong><%=places[i].price%> </div>
                                 </div>
                                 <div class="col-8">
-                                    <div><strong>Description: </strong> <%=places[i].title%> </div>
+                                    <div><strong>Description: </strong> <%=places[i].description.substr(0, 140)%> </div>
                                 </div>
                             </div>
                         </div>

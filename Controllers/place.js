@@ -29,8 +29,14 @@ router.get('/view_all', function (req, res) {
 
    PlaceModel.find(cond, function (err, doc) {
        res.render('find_places', {places : doc, query : req.query});
-   })
+   });
 
+});
+
+router.get('/view/:placeid', function (req, res){
+    PlaceModel.findById(req.params.placeid).lean().exec(function (err, doc) {
+        res.render('detailed_place', {place : doc});
+    });
 });
 
 
