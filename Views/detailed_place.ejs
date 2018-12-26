@@ -78,6 +78,32 @@
                             <h6 class="font-weight-bold"><%= place.description %></h6>
                         </div>
                     </div>
+                    
+                    
+                    <div class="row">
+                        <div class="col-3">
+                            <h6 class="font-weight-light">Available Time Intervals</h6>
+                        </div>
+                    </div>
+                    <% for(var j=0; j < place.availabilityIntervals.length; j++) {%>
+                        <div class="row">
+                            <div class="col-3">
+                                <h6 class="font-weight-light">From</h6>
+                            </div>
+                            <div class="col-9">
+                                <h6 class="font-weight-bold"><%= place.availabilityIntervals[j].startDate%></h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <h6 class="font-weight-light">To</h6>
+                            </div>
+                            <div class="col-9">
+                                <h6 class="font-weight-bold"><%= place.availabilityIntervals[j].endDate%></h6>
+                            </div>
+                        </div>
+                    <% } %>
+
                     <hr>
                     <div class="row">
                         <div class="col-12">
