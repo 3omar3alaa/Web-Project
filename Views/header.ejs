@@ -11,7 +11,7 @@
                     <a class="nav-link" href="/offer/view_sent">Sent Offers</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/place/view_received">Received Offers</a>
+                    <a class="nav-link" href="/offer/view_received">Received Offers</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/owner/add_place">Add Place</a>
@@ -21,7 +21,7 @@
                         Account
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">My Profile</a>
+                        <a class="dropdown-item" href="/tenant/view_own_profile">My Profile</a>
                         <a class="dropdown-item" href="/owner/view_places">My Places</a>
                         <% if(user.type == "admin") {%>
                             <div class="dropdown-divider"></div>    
