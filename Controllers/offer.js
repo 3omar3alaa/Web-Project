@@ -117,7 +117,8 @@ router.get('/view_sent', accesscontrol, function (req, res){
 router.post('/apply/:placeid', accesscontrol, function (req, res){
     PlaceModel.findById(req.params.placeid).lean().exec(function (err, doc){
         if(err){ //TODO check if doc empty
-            res.send('No such place!') //TODO better error
+            req.flash('error_offer', "Database error! Please try again.");
+            res.redirect('/place/view/'+req.params.placeid);
         }else{
             let isValid = true;
             for (let okayInterval of doc.availabilityIntervals){
@@ -129,7 +130,8 @@ router.post('/apply/:placeid', accesscontrol, function (req, res){
             }
 
             if(!isValid){
-                res.send('Place not available in this period!'); //TODO better error
+                req.flash('error_offer', "Place not available.");
+                res.redirect('/place/view/'+req.params.placeid);//TODO better error
             }
             else{
                 let offer = {tenantId : req.user._doc._id.toString(),
@@ -141,10 +143,12 @@ router.post('/apply/:placeid', accesscontrol, function (req, res){
                 doc.offersLog.push(offer);
                 PlaceModel.findByIdAndUpdate(doc._id, doc, function (err, response) {
                     if(err){
-                        res.send('Database error!'); //TODO better error
+                        req.flash('error_offer', "Database error! Please try again.");
+                        res.redirect('/place/view/'+req.params.placeid);
                     }
                     else{
-                        res.send('Success');
+                        req.flash('success_offer', "Added Successfully!");
+                        res.redirect('/place/view/'+req.params.placeid);
                     }
                 });
             }

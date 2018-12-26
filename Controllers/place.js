@@ -62,7 +62,7 @@ router.get('/review/:placeid', accesscontrol, function (req, res) {
 router.get('/view/:placeid', accesscontrol, function (req, res){
     PlaceModel.findById(req.params.placeid).lean().exec(function (err, doc) {
         res.render('detailed_place', {place : doc, settings : {canEdit: req.user._doc._id == doc.ownerId , canReview : canMakeReview(req.user._doc._id, doc)},
-            success: req.flash('success'), error: req.flash('error')});
+            success: req.flash('success'), error: req.flash('error'), success_offer: req.flash('success_offer'), error_offer: req.flash('error_offer')});
     });
 });
 
