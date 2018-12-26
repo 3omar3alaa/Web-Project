@@ -114,8 +114,8 @@ router.get('/view_sent', accesscontrol, function (req, res){
 
 //TODO check tenantId is the logged in user
 //TODO lock database??
-router.post('/apply', accesscontrol, function (req, res){
-    PlaceModel.findById(req.body.placeId).lean().exec(function (err, doc){
+router.post('/apply/:placeid', accesscontrol, function (req, res){
+    PlaceModel.findById(req.params.placeid).lean().exec(function (err, doc){
         if(err){ //TODO check if doc empty
             res.send('No such place!') //TODO better error
         }else{

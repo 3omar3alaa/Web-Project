@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const TenantModel = require('../models/user');
+const PlaceModel = require('../models/place');
 const accesscontrol = require('../helpers/accesscontrol').ensureAuthenticated;
 
 //TODO is it okay to send id in url?

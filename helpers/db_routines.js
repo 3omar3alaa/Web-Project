@@ -7,11 +7,10 @@ module.exports.seed = function(){
                 {
                     'username': 'paul.john',
                     'password' : 'se5retpa55word',
-                    'fullName' : 'Sample tenant',
-                    'age' : 25,
+                    'fullName' : 'Typical Tenant',
                     'email' : 'paul.john@yolo.com',
-                    'phone' : 201220419909,
-                    'address' : 'Paris, In front of Eiffel Tower',
+                    'phone' : 201111111111,
+                    'address' : 'Italy, Rome, Villa 3.',
                     '_id' : mongoose.Types.ObjectId('y5aaaaaaaaaa')
                 }
             ]

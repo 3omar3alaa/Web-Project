@@ -10,7 +10,30 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header font-weight-bold"><%= place.title %> Details</div>
+                <div class="card-header font-weight-bold"><%= place.title %> Details
+                    <%if(settings.canEdit){%>
+                        <a href="/owner/edit_place/<%=place._id%>">
+                            Edit Place
+                        </a>
+                    <%}else{%>
+                    <
+                    <form action="/offer/apply/<%=place._id%>" method="post">
+                    <div id = "availabilityIntervalsDiv">
+                        <label class="col-md-4 control-label">From</label>
+                        <div class="col-md-6">
+                            <input id="startDate" name="startDate" type="Date" placeholder="Phone" class="form-control input-md">
+
+                            <label class="col-md-4 control-label" >To</label>
+                            <div class="col-md-6">
+                                <input id="endDate" name="endDate" type="Date" placeholder="Phone" class="form-control input-md">
+                            </div>
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-primary">Add offer</button>
+                    </form>
+                    <%}%>
+
+                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
