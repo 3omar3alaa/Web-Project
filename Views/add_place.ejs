@@ -25,6 +25,16 @@
         <!-- Form Name -->
 		<div class="container">
 			<h2> Add Place </h2>
+			<% if(success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%=success%>
+            </div>
+            <% } %>
+            <% if(error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%=error%>
+            </div>
+            <% } %>
 			<form class="form-horizontal" method="POST" action="/owner/add_place">
 
 			<!-- Text input-->

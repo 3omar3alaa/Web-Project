@@ -6,7 +6,7 @@ const accesscontrol = require('../helpers/accesscontrol').ensureAuthenticated;
 
 // Render Add Place Page
 router.get('/add_place', accesscontrol ,function(req, res){
-    res.render('add_place.ejs');
+    res.render('add_place.ejs',{success: req.flash('success'), error: req.flash('error')});
 });
 
 // Add new place
@@ -56,7 +56,7 @@ router.post('/add_place', function(req, res){
         }
         else{
             req.flash('success','New place added');
-            res.redirect('/');
+            res.redirect('/owner/add_place');
         }
     });
     console.log("ID of user is" + req.user._id);

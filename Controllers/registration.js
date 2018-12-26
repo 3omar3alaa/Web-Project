@@ -68,7 +68,7 @@ router.post('/signup', function (req, res) {
 
 // Render sign in page
 router.get('/signin', function (req, res) {
-    res.render('sign_in.ejs');
+    res.render('sign_in.ejs',{success: req.flash('success'), error: req.flash('error')});
 });
 
 // Sign in Process
@@ -83,7 +83,7 @@ router.post('/signin', function(req, res, next){
 // Sign out process
 router.get('/signout', function(req, res){
   req.logout();
-  req.flash('success', 'You are logged out');
+  // req.flash('success', 'You are logged out');
   res.redirect('/');
 });
 module.exports = router;

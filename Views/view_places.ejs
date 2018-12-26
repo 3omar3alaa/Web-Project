@@ -122,6 +122,17 @@
                                             </div>
                                         </div>
                                     <% } %>
+                                <hr>
+                                <h3 class="font-weight-light">Reviews</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul class="list-group list-group-flush">
+                                            <%for(let k = 0; k < places[i].reviews.length; k++) {%>
+                                            <li class="list-group-item"><%=k+1+". "%><%=places[i].reviews[k].reviewText%></li>
+                                            <%}%>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
