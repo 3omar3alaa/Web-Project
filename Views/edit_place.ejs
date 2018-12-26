@@ -1,0 +1,130 @@
+<html>
+<head>
+    <%- include('bootstrap_head'); -%>
+    <%- include('header'); -%>
+    <script>
+        $(document).ready(function() {
+            var wrapper         = $("#availabilityIntervalsDiv");
+            var add_button      = $("#Add_Interval");
+
+            $(add_button).click(function(e){
+                e.preventDefault();
+                $(wrapper).append('<label class="col-md-4 control-label">From</label><div class="col-md-6"><input id="startDate" name="availabilityIntervals[]" value="startDate" type="Date" placeholder="Phone" class="form-control input-md" required=""><label class="col-md-4 control-label" >To</label><div class="col-md-6"><input id="endDate" name="availabilityIntervals[]" value="endDate" type="Date" placeholder="Phone" class="form-control input-md" required=""></div>'); //add input box
+            });
+
+            $(wrapper).on("click",".delete", function(e){
+                e.preventDefault(); $(this).parent('div').remove();	})
+        });
+
+    </script>
+    <title>Add Place</title>
+</head>
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+
+<!-- Form Name -->
+<div class="container">
+    <h2 class="p-2"> Edit Place </h2>
+    <% if(success.length > 0){ %>
+    <div class="alert alert-success" role="alert">
+        <%=success%>
+    </div>
+    <% } %>
+    <% if(error.length > 0){ %>
+    <div class="alert alert-danger" role="alert">
+        <%=error%>
+    </div>
+    <% } %>
+    <form class="form-horizontal" method="POST" action="/owner/update_place/<%=place._id%>">
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="fn">Title</label>
+            <div class="col-md-12">
+                <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="" value="<%=place.title%>">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ln">Description</label>
+            <div class="col-md-12">
+                <input id="description" name="description" type="text" placeholder="Description" class="form-control input-md" value="<%=place.description%>" required="">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="cmpny">Size</label>
+            <div class="col-md-12">
+                <input id="size" name="size" type="Number" placeholder="Size" value="<%=place.size%>" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" >Price</label>
+            <div class="col-md-12">
+                <input id="price" name="price" type="Number" placeholder="Price" value="<%=place.price%>" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <%function getFormattedDate(date) {
+            var year = date.getFullYear();
+
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+
+            return year + '-' + month + '-' + day;
+        }%>
+
+        <!-- Text input-->
+        <div class="availabilityIntervals" >
+            <label class="col-md-4 control-label">Available Time Intervals</label>
+            <%for (let i = 0; i < place.availabilityIntervals.length; i++) { let iStart = new Date(place.availabilityIntervals[i].startDate); let iEnd = new Date(place.availabilityIntervals[i].endDate);%>
+            <div id = "availabilityIntervalsDiv">
+                <label class="col-md-4 control-label">From</label>
+                <div class="col-md-6">
+                    <input id="startDate" name="availabilityIntervals[]" value="<%=getFormattedDate(iStart)%>" type="Date" placeholder="Phone" class="form-control input-md" required="">
+
+                    <label class="col-md-4 control-label" >To</label>
+                    <div class="col-md-6">
+                        <input id="endDate" name="availabilityIntervals[]" value="<%=getFormattedDate(iEnd)%>" type="Date" placeholder="Phone" class="form-control input-md" required="">
+                    </div>
+                </div>
+            </div>
+            <%}%>
+            <div class="col-md-4">
+                <br>
+                <button id="Add_Interval" name="" class="btn btn-primary" >Add Another Interval</button>
+                <br>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="add1">Address </label>
+                <div class="col-md-12">
+                    <input id="address" name="address" value="<%=place.address%>" type="text" placeholder="Address" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submit"></label>
+                <div class="col-md-4">
+                    <button id="submit" name="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>

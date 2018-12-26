@@ -61,7 +61,7 @@ router.get('/review/:placeid', accesscontrol, function (req, res) {
 
 router.get('/view/:placeid', accesscontrol, function (req, res){
     PlaceModel.findById(req.params.placeid).lean().exec(function (err, doc) {
-        res.render('detailed_place', {place : doc, settings : { canReview : canMakeReview(req.user._doc._id, doc)},
+        res.render('detailed_place', {place : doc, settings : {canEdit: req.user._doc._id == doc.ownerId , canReview : canMakeReview(req.user._doc._id, doc)},
             success: req.flash('success'), error: req.flash('error')});
     });
 });

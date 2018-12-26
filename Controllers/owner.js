@@ -62,6 +62,76 @@ router.post('/add_place', function(req, res){
     console.log("ID of user is" + req.user._id);
 });
 
+router.post('/update_place/:placeid', accesscontrol, function (req,res) {
+    Place.findById(req.params.placeid).lean().exec(function (err, doc){
+        if(err){
+            req.flash('error', "Database error, please try again");
+            res.redirect('/owner/edit_place/'+req.params.placeid);
+        }
+        else{
+            if(doc){
+                if(doc.ownerId == req.user._doc._id){
+                    let newAvailabilityIntervals = [];
+                    let valid = false;
+                    for (let i = 0; i<req.body.availabilityIntervals.length;i+=2){
+                        valid = isValidAvailabiltyInterval(req.body, i);
+                        newAvailabilityIntervals.push({startDate: new Date(Date.parse(req.body.availabilityIntervals[i])), endDate: new Date(Date.parse(req.body.availabilityIntervals[i+1]))})
+
+                    }
+                    if(valid){
+                        doc.availabilityIntervals = newAvailabilityIntervals;
+                        doc.title = req.body.title;
+                        doc.description = req.body.description;
+                        doc.size = req.body.size;
+                        doc.price = req.body.price;
+                        doc.address = req.body.address;
+                        Place.findByIdAndUpdate(req.params.placeid, doc).lean().exec(function (err2, doc2){
+                           if(err2){
+                               req.flash('error', "Database error, please try again");
+                               res.redirect('/owner/edit_place/'+req.params.placeid);
+                           }else{
+                               req.flash('success', "Edits saved!");
+                               res.redirect('/owner/edit_place/'+req.params.placeid);
+                           }
+                        });
+                    }else{
+                        req.flash('error', "Invalid time interval");
+                        res.redirect('/owner/edit_place/'+req.params.placeid);
+                    }
+                }
+                else{
+                    req.flash('error', "Invalid Credentials");
+                    res.redirect('/owner/edit_place/'+req.params.placeid);
+                }
+            }else{
+                req.flash('error', "Place not found!");
+                res.redirect('/owner/edit_place/'+req.params.placeid);
+            }
+        }
+    });
+});
+
+//TODO delete interval?
+router.get('/edit_place/:placeid', accesscontrol, function(req, res){
+    Place.findById(req.params.placeid).lean().exec(function (err, doc){
+       if(err){
+           res.send('DATABASE ERROR!')
+       }
+       else{
+           if(doc){
+               if(doc.ownerId == req.user._doc._id){
+                   res.render('edit_place', {place:doc, success: req.flash('success'), error: req.flash('error')});
+               }
+               else{
+                   res.send('Invalid Credentials');
+               }
+           }else{
+               res.send('404');
+           }
+       }
+    });
+});
+
 
 //View user places
 router.get('/view_places', accesscontrol ,function(req, res){
@@ -92,6 +162,11 @@ function cloneMessage(interval) {
             clone[key]=interval[key];
     }
     return clone;
+}
+
+function isValidAvailabiltyInterval(doc, i){
+    //TODO can't make availability in accepted available periods
+    return doc.availabilityIntervals[i] <  doc.availabilityIntervals[i+1];
 }
 
 module.exports = router;
