@@ -62,6 +62,7 @@
                                     <h4 class="alert-heading"><a href="/place/view/<%=places[i]._id%>"><%=places[i].title%> </a>  <span class="badge badge-secondary">Pending</span> </h4>
                                     <div><strong>Offer Start Date:</strong> <%=places[i].offersLog[j].offerInterval.startDate%> </div>
                                     <div><strong>Offer End Date:</strong>  <%=places[i].offersLog[j].offerInterval.endDate%> </div>
+                                    <a href="/tenant/view/<%=places[i].offersLog[j].tenantId%>">Tenant Profile</a>
                                 </div>
                                 <div class="col-4 align-self-center text-center">
                                     <button class="btn btn-success" onclick="accept_offer('<%=places[i]._id%>', '<%=places[i].offersLog[j]._id.toString()%>','<%=owner._id%>')">Accept</button>

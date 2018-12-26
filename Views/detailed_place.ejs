@@ -11,28 +11,39 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header font-weight-bold"><%= place.title %> Details
-                    <%if(settings.canEdit){%>
-                        <a href="/owner/edit_place/<%=place._id%>">
-                            Edit Place
-                        </a>
-                    <%}else{%>
-                    <
-                    <form action="/offer/apply/<%=place._id%>" method="post">
-                    <div id = "availabilityIntervalsDiv">
-                        <label class="col-md-4 control-label">From</label>
-                        <div class="col-md-6">
-                            <input id="startDate" name="startDate" type="Date" placeholder="Phone" class="form-control input-md">
+                    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#offer" aria-expanded="true" aria-controls="offer">
+                        Add offer
+                    </button>
+                        <% if(success_offer.length > 0){ %>
+                        <div class="alert alert-success" role="alert">
+                            <%=success_offer%>
+                        </div>
+                        <% } %>
+                        <% if(error_offer.length > 0){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%=error_offer%>
+                        </div>
+                        <% } %>
+                    <div class="row p-3 collapse"  id="offer">
+                        <div class="col-12">
+                            <div class="card card-body">
+                                <form action="/offer/apply/<%=place._id%>" method="post">
+                                    <div id = "availabilityIntervalsDiv">
+                                        <label class="col-md-4 control-label">From</label>
+                                        <div class="col-md-6">
+                                            <input id="startDate" name="startDate" type="Date" placeholder="Phone" class="form-control input-md">
 
-                            <label class="col-md-4 control-label" >To</label>
-                            <div class="col-md-6">
-                                <input id="endDate" name="endDate" type="Date" placeholder="Phone" class="form-control input-md">
+                                            <label class="col-md-4 control-label" >To</label>
+                                            <div class="col-md-6">
+                                                <input id="endDate" name="endDate" type="Date" placeholder="Phone" class="form-control input-md">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="m-3 btn btn-primary">Submit</button>
+                                </form>
                             </div>
                         </div>
                     </div>
-                        <button type="submit" class="btn btn-primary">Add offer</button>
-                    </form>
-                    <%}%>
-
                 </div>
                 <div class="card-body">
                     <div class="row">
